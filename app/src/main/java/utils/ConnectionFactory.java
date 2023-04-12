@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import io.github.cdimascio.dotenv.Dotenv;
+import java.sql.PreparedStatement;
 
 public class ConnectionFactory {
     
@@ -27,6 +28,20 @@ public class ConnectionFactory {
         try {
             if (connection != null) {
                 connection.close();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao fechar conexão com o banco de dados", e);
+        }
+    }
+    
+    public static void closeConnection(Connection connection, PreparedStatement statement) {
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+            
+            if (statement != null) {
+                statement.close();
             }
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao fechar conexão com o banco de dados", e);
