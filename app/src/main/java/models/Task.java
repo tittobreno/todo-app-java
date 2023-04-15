@@ -1,4 +1,3 @@
-
 package models;
 
 import java.time.LocalDateTime;
@@ -27,11 +26,10 @@ public class Task {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-    
-   public Task() {
-    this.createdAt = LocalDateTime.ofInstant(new Date().toInstant(), ZoneId.systemDefault());
-}
 
+    public Task() {
+        this.createdAt = LocalDateTime.ofInstant(new Date().toInstant(), ZoneId.systemDefault());
+    }
 
     public int getId() {
         return id;
@@ -104,14 +102,10 @@ public class Task {
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
-    
-    
 
     @Override
     public String toString() {
         return "Task{" + "id=" + id + ", idProject=" + idProject + ", name=" + name + ", description=" + description + ", notes=" + notes + ", isCompleted=" + isCompleted + ", deadline=" + deadline + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
     }
-    
-    
-    
+
 }

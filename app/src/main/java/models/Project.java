@@ -18,6 +18,10 @@ public class Project {
         this.updatedAt = updatedAt;
     };
 
+    public Project() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public int getId() {
         return id;
     }
@@ -62,7 +66,4 @@ public class Project {
     public String toString() {
         return "Project{" + "id=" + id + ", name=" + name + ", description=" + description + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + '}';
     }
-    
-    
-
 }
