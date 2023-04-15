@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import models.Project;
 import utils.ConnectionFactory;
 
@@ -44,7 +46,8 @@ public class ProjectController {
                 + "name = ?,"
                 + "description = ?"
                 + "createdAt = ?,"
-                + "updatedAt = ?";
+                + "updatedAt = ?,"
+                + "WHERE id = ?";
         
         Connection connection = null;
         PreparedStatement statement = null;
@@ -86,6 +89,13 @@ public class ProjectController {
         } finally {
             ConnectionFactory.closeConnection(connection, statement);
         }
+    };
+    
+    public List<Project> getAll() {
+        
+        
+        
+        return null;
     }
 
 
