@@ -37,6 +37,38 @@ public class ProjectController {
         } finally {
             ConnectionFactory.closeConnection(connection, statement);
         }
-    }
+    };
+    
+    public void update(Project project) {
+        String sql = "UPDATE project SET"
+                + "name = ?,"
+                + "description = ?"
+                + "createdAt = ?,"
+                + "updatedAt = ?";
+        
+        Connection connection = null;
+        PreparedStatement statement = null;
+        
+        try {
+            connection = ConnectionFactory.getConnection();
+            statement = connection.prepareStatement(sql);
+            
+            statement.setString(1, project.getName());
+            statement.setString(2, project.getDescription());
+            
+            LocalDateTime createdAt = project.getCreatedAt();
+            statement.setTimestamp(3, Timestamp.valueOf(createdAt));
+            
+            LocalDateTime updatedAt = project.getUpdatedAt();
+            statement.setTimestamp(4, Timestamp.valueOf(updatedAt));
+            
+            statement.execute();
+        } catch (Exception ex) {
+            throw new RuntimeException("Erro ao atualizar projeto: " + ex.getMessage(), ex);
+        } finally {
+           ConnectionFactory.closeConnection(connection, statement);
+        }
+    };
+
 
 }
